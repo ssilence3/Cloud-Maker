@@ -6,10 +6,16 @@ RED='\033[0;31m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Настройки
+ Определяем директорию, в которой лежит сам скрипт
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+# Настройки (теперь они относительны папки скрипта)
 API_URL="http://localhost:8000"
 TEST_VM_NAME="autotest-vm"
-BASE_IMG="/home/silence3/cloud-maker/noble-server-cloudimg-amd64.img"
+# Если образ лежит в корне проекта:
+BASE_IMG="$SCRIPT_DIR/noble-server-cloudimg-amd64.img" 
+# Если образ лежит в папке images:
+# BASE_IMG="$SCRIPT_DIR/images/noble-server-cloudimg-amd64.img"
 
 echo -e "${YELLOW}=== Начинаем проверку реализованных фич ===${NC}\n"
 
